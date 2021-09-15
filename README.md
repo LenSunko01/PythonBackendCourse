@@ -1,3 +1,3 @@
 # PythonBackendCourse
 
-Contains project implemented in Pythond Backend Development course.
+Contains project implemented for Pythond Backend Development course.
