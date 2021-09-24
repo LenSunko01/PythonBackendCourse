@@ -68,20 +68,20 @@ class ServicesTest(TestCase):
         assert(get_longest_word(text) == "Longest")
 
         text="abc xyz"
-        assert(get_longest_word(text) == "abc")
+        assert(get_longest_word(text) == "abc" or get_longest_word(text) == "xyz")
 
         text="xyz abc"
-        assert(get_longest_word(text) == "xyz")
+        assert(get_longest_word(text) == "abc" or get_longest_word(text) == "xyz")
 
     def test_getShortestWord(self):
         text="Short Shorter Shortest"
         assert(get_shortest_word(text) == "Short")
 
         text="abc xyz"
-        assert(get_shortest_word(text) == "abc")
+        assert(get_shortest_word(text) == "abc" or get_shortest_word(text) == "xyz")
 
         text="xyz abc"
-        assert(get_shortest_word(text) == "xyz")
+        assert(get_shortest_word(text) == "abc" or get_shortest_word(text) == "xyz")
 
     def test_processText_shortText_returnFalse(self):
         note_dict = {}
