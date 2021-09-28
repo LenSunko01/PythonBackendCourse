@@ -26,3 +26,5 @@ To run particular test method specify the test class and method name, e.g.:
 ```
 $ ./manage.py test notes.tests.unit_tests.test_services.ServicesTest.test_getAllNotes
 ```
+## Load testing
+See "Load testing.pdf" file in project directory.
