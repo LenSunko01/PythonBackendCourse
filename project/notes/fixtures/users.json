@@ -1,0 +1,13 @@
+[{"model": "notes.userpreferences", "pk": 1, "fields": {"note_color_preference": "BL", "note_name_preference": "TODAY"}},
+  {"model": "notes.userpreferences", "pk": 2, "fields": {"note_color_preference": "GR", "note_name_preference": "NOW"}},
+  {"model": "notes.userpreferences", "pk": 3, "fields": {"note_color_preference": "GR", "note_name_preference": "NOW"}},
+  {"model": "notes.userpreferences", "pk": 4, "fields": {"note_color_preference": "RE", "note_name_preference": "NOW"}},
+  {"model": "notes.userinfo", "pk": 1, "fields": {"user_mail": "first_mail@mail.ru", "user_chosen_name": "first", "user_preferences": 1}},
+  {"model": "notes.userinfo", "pk": 2, "fields": {"user_mail": "second_mail@mail.ru", "user_chosen_name": "second", "user_preferences": 2}},
+  {"model": "notes.userinfo", "pk": 3, "fields": {"user_mail": "third_mail@mail.ru", "user_chosen_name": "third", "user_preferences": 3}},
+  {"model": "notes.userinfo", "pk": 4, "fields": {"user_mail": "fourth_mail@mail.ru", "user_chosen_name": "fourth", "user_preferences": 4}},
+  {"model": "notes.user", "pk": 1, "fields": {"user_info": 1}},
+  {"model": "notes.user", "pk": 2, "fields": {"user_info": 2}},
+  {"model": "notes.user", "pk": 3, "fields": {"user_info": 3}},
+  {"model": "notes.user", "pk": 4, "fields": {"user_info": 4}}
+]
