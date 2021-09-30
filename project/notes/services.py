@@ -3,6 +3,9 @@ import random
 from .serializers import NoteSerializer
 from django.http import JsonResponse
 from collections import Counter
+import grpc
+from outer.servers import counter_pb2
+from outer.servers import counter_pb2_grpc
 
 
 def get_all_notes():
@@ -16,6 +19,19 @@ def get_notes_with_given_name(name):
     items_data = []
     for item in items:
         if item.note_name == name:
+            items_data.append(item)
+    return NoteSerializer(items_data, many=True)
+
+
+def get_notes_with_given_word(word):
+    items = Note.objects.all()
+
+    channel = grpc.insecure_channel('localhost:50051')
+    stub = counter_pb2_grpc.CounterStub(channel)
+    items_data = []
+    for item in items:
+        reply = stub.Count(counter_pb2.Text(text = item.note_text, word=word))
+        if reply.number > 0:
             items_data.append(item)
     return NoteSerializer(items_data, many=True)
 
