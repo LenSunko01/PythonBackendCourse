@@ -14,6 +14,17 @@ class GreetingView(View):
 
 
 @method_decorator(csrf_exempt, name='dispatch')
+class FilterView(View):
+    def get(self, request):
+        word = request.GET.get("word")
+        if word is None:
+            notes_serializer = get_all_notes()
+        else:
+            notes_serializer = get_notes_with_given_word(word)
+        return JsonResponse(notes_serializer.data, safe=False)
+
+
+@method_decorator(csrf_exempt, name='dispatch')
 class NoteView(View):
     def get(self, request):
         name = request.GET.get("name")
