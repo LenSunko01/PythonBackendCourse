@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "protos";
+option java_outer_classname = "RouteGuideProto";
+option objc_class_prefix = "RTG";
+
+package protos;
+
+service Counter {
+  rpc Count(Text) returns (NumberOfOccurrences) {}
+}
+
+message Text {
+  string text = 1;
+  string word = 2;
+}
+
+message NumberOfOccurrences {
+  int32 number = 1;
+}

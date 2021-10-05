@@ -1,11 +1,11 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "project.outer.servers";
+option java_package = "protos";
 option java_outer_classname = "RouteGuideProto";
 option objc_class_prefix = "RTG";
 
-package project.outer.servers;
+package protos;
 
 service Counter {
   rpc Count(Text) returns (NumberOfOccurrences) {}

@@ -4,8 +4,8 @@ from .serializers import NoteSerializer
 from django.http import JsonResponse
 from collections import Counter
 import grpc
-from outer.servers import counter_pb2
-from outer.servers import counter_pb2_grpc
+from protos import counter_pb2
+from protos import counter_pb2_grpc
 
 
 def get_all_notes():
