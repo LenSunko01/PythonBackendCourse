@@ -1,0 +1,4 @@
+TEMPLATE = [
+        'reminder',
+        'shopping'
+    ]

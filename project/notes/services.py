@@ -1,9 +1,12 @@
 from .models import Note
 import random
 from .serializers import NoteSerializer
+from .paths import *
+from .templates import *
 from django.http import JsonResponse
 from collections import Counter
 import grpc
+import requests
 from protos import counter_pb2
 from protos import counter_pb2_grpc
 
@@ -98,3 +101,28 @@ def init_note(data):
 
     note = Note.objects.create(**serializer.data)
     return True, NoteSerializer(note)
+
+
+def save_note(request):
+    response = requests.post(SAVING_SERVICE_PATH, data = request.body)
+    return JsonResponse(response.json(), status=response.status_code)
+
+
+def update_note_name(request):
+    response = requests.patch(SAVING_SERVICE_PATH, data = request.body)
+    return JsonResponse(response.json(), status=response.status_code)
+
+
+def get_template(type):
+    if type is None:
+        return JsonResponse({"error": "template name is not specified"}, status=400)
+    if type not in TEMPLATE:
+        return JsonResponse({"error": "template not found: " + type}, status=404)
+    response = requests.get(TEMPLATE_SERVICE_PATH + type)
+    return JsonResponse(response.json(), status=response.status_code)
+
+
+def find_note(name_criterion, color_criterion):
+    payload = {'name': name_criterion, 'color': color_criterion}
+    response = requests.get(FINDING_SERVICE_PATH, params=payload)
+    return JsonResponse(response.json(), status=response.status_code, safe=False)

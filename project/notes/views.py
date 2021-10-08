@@ -41,3 +41,27 @@ class NoteView(View):
             return JsonResponse(result.data, status=201)
         else:
             return result
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class SavingView(View):
+    def post(self, request):
+        return save_note(request)
+
+    def patch(self, request):
+        return update_note_name(request)
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class FindingView(View):
+    def get(self, request):
+        name_criterion = request.GET.get("name")
+        color_criterion = request.GET.get("color")
+        return find_note(name_criterion, color_criterion)
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class TemplateView(View):
+    def get(self, request):
+        type = request.GET.get("type")
+        return get_template(type)
